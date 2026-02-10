@@ -1,0 +1,11 @@
+.page__main {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+
+  background: linear-gradient(
+    var(--third-light-bg-color),
+    var(--primary-light-bg-color)
+  );
+}

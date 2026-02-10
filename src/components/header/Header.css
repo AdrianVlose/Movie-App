@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(
+    var(--third-dark-bg-color),
+    var(--primary-dark-bg-color)
+  );
+}
+
+.header__title {
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-main-color);
+}
