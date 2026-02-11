@@ -7,12 +7,14 @@
   height: 10%;
   gap: 1rem;
   padding-left: 1rem;
+  position: relative;
 }
 
 .search-bar__genres {
   width: 180px;
   background: var(--gradient-label-rating);
   height: 50%;
+  min-height: 40px;
   padding-left: 1rem;
   display: flex;
   align-items: center;
@@ -38,4 +40,23 @@
 
 .search-bar__genres select:focus-visible {
   outline: none;
+}
+
+.search-bar__icons {
+  position: absolute;
+  background: linear-gradient(
+    var(--primary-dark-bg-color),
+    var(--third-dark-bg-color)
+  );
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 12px;
+  right: 1rem;
+}
+
+.search-bar__icon {
+  padding: 0.1rem;
 }
