@@ -23,14 +23,14 @@ function Card({ movie, index }: { movie: MovieType; index: number }) {
   const formattedGenre = convertFirstLetterToUpperCase(movie.genre);
 
   const handleAddToWatchlist = (event: React.MouseEvent) => {
-    event.preventDefault();
+    event.stopPropagation();
 
     addToWatchlist(movie);
     setIsMovieInWatchlist(true);
   };
 
   const handleRemoveFromWatchlist = (event: React.MouseEvent) => {
-    event.preventDefault();
+    event.stopPropagation();
 
     removeFromWatchlist(movie);
     setIsMovieInWatchlist(false);
