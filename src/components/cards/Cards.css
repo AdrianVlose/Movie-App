@@ -8,4 +8,26 @@
   align-content: space-around;
   height: 90%;
   width: 100%;
+  position: relative;
+}
+
+.movies-list__arrow-icon {
+  position: absolute;
+  z-index: 10;
+  align-self: center;
+}
+
+.arrow-icon--right {
+  right: 0.1rem;
+}
+
+.arrow-icon--left {
+  left: 0.1rem;
+}
+
+.arrow-icon--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  opacity: 0.1;
 }

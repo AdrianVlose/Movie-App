@@ -4,11 +4,35 @@ import {
   classifyRating,
   convertFirstLetterToUpperCase,
 } from '../../utils/card.js';
+import { useState } from 'react';
+import {
+  addToWatchlist,
+  isMovieAlreadyInHistory,
+  removeFromWatchlist,
+} from '../../utils/watchlist.js';
 
 function Card({ movie, index }: { movie: MovieType; index: number }) {
-  const imgPath = `/assets/${movie.image}`;
+  const [isMovieInWatchlist, setIsMovieInWatchlist] = useState(
+    isMovieAlreadyInHistory(movie),
+  );
+  const imgPath = `src/assets/movies/${movie.image}`;
   const ratingValueColor = classifyRating(parseFloat(movie.rating));
   const formattedGenre = convertFirstLetterToUpperCase(movie.genre);
+
+  const handleAddToWatchlist = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    addToWatchlist(movie);
+    setIsMovieInWatchlist(true);
+  };
+
+  const handleRemoveFromWatchlist = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    removeFromWatchlist(movie);
+    setIsMovieInWatchlist(false);
+  };
+
   return (
     <article id={`card-id-${index}`} className='movie-card'>
       <img src={imgPath} className='movie-card__img' alt={movie.title} />
@@ -23,8 +47,16 @@ function Card({ movie, index }: { movie: MovieType; index: number }) {
         <span className='movie-card__rating'>
           Genre: <h4 className='movie-card__specification'>{formattedGenre}</h4>
         </span>
-        <button className='movie-card__watchlist-button'>
-          Add to Watchlist
+        <button
+          type='submit'
+          className='movie-card__watchlist-button'
+          onClick={
+            isMovieInWatchlist
+              ? handleRemoveFromWatchlist
+              : handleAddToWatchlist
+          }
+        >
+          {isMovieInWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
         </button>
       </section>
     </article>

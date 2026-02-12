@@ -71,7 +71,8 @@
   color: var(--text-main-color);
   background: var(--gradient-label-rating);
   border-radius: 12px;
-  width: 50%;
+  width: 80%;
+  max-width: 350px;
   align-self: center;
   min-height: 25%;
   font-weight: 600;
