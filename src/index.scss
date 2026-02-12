@@ -1,3 +1,11 @@
+@use './components/main.scss' as *;
+@use './components/bars/searchBar.scss' as *;
+@use './components/cards/card.scss' as *;
+@use './components/cards/cards.scss' as *;
+@use './components/forms/searchForm.scss' as *;
+@use './components/header/header.scss' as *;
+@use './components/cards/modalCard.scss' as *;
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -6,25 +14,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  $primary-dark-bg-color: #000000;
-  $primary-light-bg-color: #ffffff;
-  $second-dark-bg-color: #050505;
-  $second-light-bg-color: #f9fafb;
-  $third-dark-bg-color: #1a1a1a;
-  $third-light-bg-color: #f3f4f6;
-  $text-label-color: #9ca3af;
-  $text-nav-color: #f3f4f6;
-  $text-main-color: #ffffff;
-  $primary-border-color: #d1d5db;
-  $second-border-color: #e5e7eb;
-  $third-border-color: #1f2937;
-  $grey-bg-color: #8c8c8c;
-
-  $rating-bad-color: #e74c3c;
-  $rating-good-color: #2ecc71;
-  $rating-ok-color: #e67e22;
-  $gradient-label-rating: linear-gradient(135deg, #0f0f0f, #1c1c1e);
 }
 
 body {
@@ -35,4 +24,11 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }

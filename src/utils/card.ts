@@ -2,12 +2,12 @@ import type { MovieType } from '../types/movie-types.ts';
 
 export function classifyRating(rating: number) {
   if (rating < 5) {
-    return 'movie-card__rating--bad';
+    return 'rating--bad';
   }
   if (rating >= 8) {
-    return 'movie-card__rating--good';
+    return 'rating--good';
   }
-  return 'movie-card__rating--ok';
+  return 'rating--ok';
 }
 
 export function convertFirstLetterToUpperCase(text: string) {

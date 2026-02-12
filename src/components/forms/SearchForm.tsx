@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './SearchForm.css';
 import { parseData } from '../../utils/data';
 import type { MovieType } from '../../types/movie-types';
 
@@ -42,7 +41,6 @@ function SearchForm({
       <label className='label'>
         <input
           id='search-input'
-          className='search-form__input'
           type='text'
           placeholder='Type a movie ...'
           autoComplete='none'

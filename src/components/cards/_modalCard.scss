@@ -1,0 +1,94 @@
+@use '../../styles/variables.scss' as *;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal {
+    width: 700px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 0.25rem 1rem;
+    border-radius: 24px;
+    background: linear-gradient($third-dark-bg-color, $primary-dark-bg-color);
+
+    .img {
+      align-self: center;
+      width: 100%;
+      height: 50%;
+      max-height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      border: 1px solid rgba(128, 128, 128, 0.4);
+    }
+
+    .info {
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 0.5rem;
+      gap: 0.5rem;
+
+      .title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: $text-main-color;
+        margin: 0;
+        text-align: center;
+      }
+
+      .label-information {
+        color: $text-label-color;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .specification {
+          margin: 0;
+          padding: 0.15rem 0.3rem;
+          background: $gradient-label-rating;
+          border-radius: 8px;
+          color: $text-main-color;
+
+          &.rating--good {
+            color: $rating-good-color;
+          }
+
+          &.rating--bad {
+            color: $rating-bad-color;
+          }
+
+          &.rating--ok {
+            color: $rating-ok-color;
+          }
+        }
+      }
+
+      .description {
+        color: $text-label-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.5rem;
+
+        p {
+          margin: 0;
+          padding: 0.15rem 0.3rem;
+          background: $gradient-label-rating;
+          border-radius: 8px;
+          color: $text-main-color;
+        }
+      }
+    }
+  }
+}
