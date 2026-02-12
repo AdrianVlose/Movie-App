@@ -6,16 +6,22 @@ import type { MovieType } from '../../types/movie-types';
 function SearchForm({
   updateMoviesFn,
   selectedGenre,
+  isUserOnHomePage,
 }: {
   updateMoviesFn: React.Dispatch<React.SetStateAction<MovieType[]>>;
   selectedGenre: string;
+  isUserOnHomePage: boolean;
 }) {
   const [inputText, setInputText] = useState('');
 
   useEffect(() => {
-    const filteredMovies = parseData(inputText, selectedGenre);
+    const filteredMovies = parseData(
+      inputText,
+      selectedGenre,
+      isUserOnHomePage,
+    );
     updateMoviesFn(filteredMovies);
-  }, [selectedGenre]);
+  }, [selectedGenre, isUserOnHomePage]);
 
   const handleSearch = (event: React.SubmitEvent<HTMLFormElement> | null) => {
     if (!event) {
@@ -23,7 +29,11 @@ function SearchForm({
     }
     event.preventDefault();
 
-    const filteredMovies = parseData(inputText, selectedGenre);
+    const filteredMovies = parseData(
+      inputText,
+      selectedGenre,
+      isUserOnHomePage,
+    );
     updateMoviesFn(filteredMovies);
   };
 

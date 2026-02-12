@@ -10,11 +10,16 @@ function SearchBar({
 }: {
   updateMoviesFn: React.Dispatch<React.SetStateAction<MovieType[]>>;
 }) {
+  const [isUserOnHomePage, setIsUserOnHomePage] = useState(true);
   const [genre, setGenre] = useState('all genres');
 
   return (
     <nav className='search-bar'>
-      <SearchForm updateMoviesFn={updateMoviesFn} selectedGenre={genre} />
+      <SearchForm
+        updateMoviesFn={updateMoviesFn}
+        selectedGenre={genre}
+        isUserOnHomePage={isUserOnHomePage}
+      />
       <label className='search-bar__genres'>
         Genre:
         <select value={genre} onChange={(e) => setGenre(e.target.value)}>
@@ -32,11 +37,13 @@ function SearchBar({
           src='src/assets/home.svg'
           alt='home-icon'
           className='search-bar__icon'
+          onClick={() => setIsUserOnHomePage(true)}
         />
         <img
           src='src/assets/watchlist.svg'
           alt='watchlist-icon'
           className='search-bar__icon'
+          onClick={() => setIsUserOnHomePage(false)}
         />
       </section>
     </nav>

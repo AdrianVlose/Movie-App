@@ -12,7 +12,10 @@
 
 .search-bar__genres {
   width: 180px;
-  background: var(--gradient-label-rating);
+  background: linear-gradient(
+    var(--third-dark-bg-color),
+    var(--primary-dark-bg-color)
+  );
   height: 50%;
   min-height: 40px;
   padding-left: 1rem;
@@ -45,8 +48,8 @@
 .search-bar__icons {
   position: absolute;
   background: linear-gradient(
-    var(--primary-dark-bg-color),
-    var(--third-dark-bg-color)
+    var(--third-dark-bg-color),
+    var(--primary-dark-bg-color)
   );
   padding: 0 2rem;
   display: flex;
