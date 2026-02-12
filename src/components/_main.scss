@@ -1,0 +1,9 @@
+@use '../styles/variables.scss' as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+  background: linear-gradient($third-light-bg-color, $primary-light-bg-color);
+}

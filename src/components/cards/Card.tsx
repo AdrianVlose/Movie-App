@@ -1,20 +1,23 @@
-import './Card.css';
 import type { MovieType } from '../../types/movie-types.js';
 import {
   classifyRating,
   convertFirstLetterToUpperCase,
 } from '../../utils/card.js';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   addToWatchlist,
   isMovieAlreadyInHistory,
   removeFromWatchlist,
 } from '../../utils/watchlist.js';
+import ModalContext from '../../utils/modalContext.js';
 
 function Card({ movie, index }: { movie: MovieType; index: number }) {
   const [isMovieInWatchlist, setIsMovieInWatchlist] = useState(
     isMovieAlreadyInHistory(movie),
   );
+  const { isModalOpen, setIsModalOpen, setMovieToBeDisplayed } =
+    useContext(ModalContext);
+
   const imgPath = `src/assets/movies/${movie.image}`;
   const ratingValueColor = classifyRating(parseFloat(movie.rating));
   const formattedGenre = convertFirstLetterToUpperCase(movie.genre);
@@ -34,22 +37,29 @@ function Card({ movie, index }: { movie: MovieType; index: number }) {
   };
 
   return (
-    <article id={`card-id-${index}`} className='movie-card'>
-      <img src={imgPath} className='movie-card__img' alt={movie.title} />
-      <section className='movie-card__info'>
-        <h2 className='movie-card__title'>{movie.title}</h2>
-        <span className='movie-card__rating'>
-          Rating:{' '}
-          <h4 className={`movie-card__specification ${ratingValueColor}`}>
+    <article
+      id={`card-id-${index}`}
+      className={isModalOpen ? 'movie-card no-hover' : 'movie-card'}
+      onClick={() => {
+        setIsModalOpen(true);
+        setMovieToBeDisplayed(movie);
+      }}
+    >
+      <img src={imgPath} className='img' alt={movie.title} />
+      <section className='info'>
+        <h2 className='title'>{movie.title}</h2>
+        <span className='label-information'>
+          Rating:
+          <h4 className={`specification ${ratingValueColor}`}>
             {movie.rating}
           </h4>
         </span>
-        <span className='movie-card__rating'>
-          Genre: <h4 className='movie-card__specification'>{formattedGenre}</h4>
+        <span className='label-information'>
+          Genre: <h4 className='specification'>{formattedGenre}</h4>
         </span>
         <button
           type='submit'
-          className='movie-card__watchlist-button'
+          className='watchlist-button'
           onClick={
             isMovieInWatchlist
               ? handleRemoveFromWatchlist

@@ -1,0 +1,12 @@
+@use '../../styles/variables.scss' as *;
+.header {
+  width: 100%;
+  height: 10%;
+  background: linear-gradient($third-dark-bg-color, $primary-dark-bg-color);
+
+  .title {
+    text-align: center;
+    font-weight: 700;
+    color: $text-main-color;
+  }
+}
