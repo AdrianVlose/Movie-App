@@ -24,17 +24,5 @@
       border: 1px solid $text-label-color;
       background-color: $third-dark-bg-color;
     }
-
-    .icon-delete {
-      position: absolute;
-      align-self: center;
-      right: 0.5rem;
-      z-index: 10;
-      transition: all 0.5s ease;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
   }
 }

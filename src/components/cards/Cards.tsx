@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getNextMoviesToBeDisplayed } from '../../utils/card.js';
 import { ModalContext, LoadingContext } from '../../utils/contexts.js';
 import ModalCard from './ModalCard.js';
+import { LeftArrowIcon, RightArrowIcon } from '../../utils/icons.js';
 
 function Cards({ movies = [] }: { movies: MovieType[] }) {
   const [numberOfPageToBeDisplayed, setNumberOfPageToBeDisplayed] = useState(0);
@@ -34,10 +35,8 @@ function Cards({ movies = [] }: { movies: MovieType[] }) {
         <h2 className='loading-state-text'>Preparing your dashboard</h2>
       ) : (
         <>
-          <img
-            src='src/assets/left-arrow.svg'
-            alt='left-arrow'
-            className={`arrow-icon left ${leftArrowExtraClass}`}
+          <LeftArrowIcon
+            className={leftArrowExtraClass}
             onClick={() =>
               setNumberOfPageToBeDisplayed(numberOfPageToBeDisplayed - 1)
             }
@@ -56,10 +55,8 @@ function Cards({ movies = [] }: { movies: MovieType[] }) {
 
             {isModalOpen ? <ModalCard /> : <></>}
           </ModalContext>
-          <img
-            src='src/assets/right-arrow.svg'
-            alt='right-arrow'
-            className={`arrow-icon right ${rightArrowExtraClass}`}
+          <RightArrowIcon
+            className={rightArrowExtraClass}
             onClick={() =>
               setNumberOfPageToBeDisplayed(numberOfPageToBeDisplayed + 1)
             }

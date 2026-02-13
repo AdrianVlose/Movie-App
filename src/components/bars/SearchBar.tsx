@@ -3,6 +3,7 @@ import type { MovieType } from '../../types/movieTypes.js';
 import { GENRES } from '../../types/constants.js';
 import { convertFirstLetterToUpperCase } from '../../utils/card.js';
 import { useState } from 'react';
+import { SearchBarIcon } from '../../utils/icons.js';
 
 function SearchBar({
   updateMoviesFn,
@@ -32,16 +33,9 @@ function SearchBar({
         </select>
       </label>
       <section className='icons'>
-        <img
-          src='src/assets/home.svg'
-          alt='home-icon'
-          className='icon'
-          onClick={() => setIsUserOnHomePage(true)}
-        />
-        <img
-          src='src/assets/watchlist.svg'
-          alt='watchlist-icon'
-          className='icon'
+        <SearchBarIcon src='home' onClick={() => setIsUserOnHomePage(true)} />
+        <SearchBarIcon
+          src='watchlist'
           onClick={() => setIsUserOnHomePage(false)}
         />
       </section>

@@ -54,14 +54,5 @@
     gap: 2rem;
     border-radius: 12px;
     right: 1rem;
-
-    .icon {
-      padding: 0.1rem;
-      transition: all 0.1s linear;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
   }
 }
