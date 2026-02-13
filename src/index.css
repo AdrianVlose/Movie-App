@@ -161,6 +161,11 @@
   width: 100%;
   position: relative;
 }
+.movies-list .loading-state-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
 .movies-list .arrow-icon {
   position: absolute;
   z-index: 10;
@@ -179,6 +184,20 @@
   opacity: 0.1;
 }
 
+.loading-state-display {
+  display: flex;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  width: 100%;
+}
+.loading-state-display .loading-state-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
 .search-form {
   width: 25%;
   display: flex;
@@ -191,6 +210,7 @@
   max-width: 600px;
   height: 100%;
   max-height: 40px;
+  position: relative;
 }
 .search-form .label input {
   width: 100%;
@@ -201,6 +221,16 @@
   font-size: 1rem;
   border: 1px solid #9ca3af;
   background-color: #1a1a1a;
+}
+.search-form .label .icon-delete {
+  position: absolute;
+  align-self: center;
+  right: 0.5rem;
+  z-index: 10;
+  transition: all 0.5s ease;
+}
+.search-form .label .icon-delete:hover {
+  transform: scale(1.1);
 }
 
 .header {

@@ -1,4 +1,4 @@
-import type { MovieType } from '../../types/movie-types.js';
+import type { MovieType } from '../../types/movieTypes.js';
 import {
   classifyRating,
   convertFirstLetterToUpperCase,
@@ -9,7 +9,7 @@ import {
   isMovieAlreadyInHistory,
   removeFromWatchlist,
 } from '../../utils/watchlist.js';
-import ModalContext from '../../utils/modalContext.js';
+import { ModalContext } from '../../utils/contexts.js';
 
 function Card({ movie, index }: { movie: MovieType; index: number }) {
   const [isMovieInWatchlist, setIsMovieInWatchlist] = useState(

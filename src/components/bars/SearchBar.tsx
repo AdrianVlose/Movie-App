@@ -1,5 +1,5 @@
 import SearchForm from '../forms/SearchForm.jsx';
-import type { MovieType } from '../../types/movie-types.js';
+import type { MovieType } from '../../types/movieTypes.js';
 import { GENRES } from '../../types/constants.js';
 import { convertFirstLetterToUpperCase } from '../../utils/card.js';
 import { useState } from 'react';

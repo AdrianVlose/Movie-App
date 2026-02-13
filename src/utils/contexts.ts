@@ -1,5 +1,8 @@
 import { createContext } from 'react';
-import type { ModalContextType } from '../types/movie-types';
+import type {
+  ModalContextType,
+  LoadingContextType,
+} from '../types/contextTypes';
 
 export const ModalContext = createContext<ModalContextType>({
   isModalOpen: false,
@@ -8,4 +11,7 @@ export const ModalContext = createContext<ModalContextType>({
   setMovieToBeDisplayed: () => {},
 });
 
-export default ModalContext;
+export const LoadingContext = createContext<LoadingContextType>({
+  isLoading: false,
+  setIsLoading: () => {},
+});
