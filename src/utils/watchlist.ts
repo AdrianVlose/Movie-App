@@ -1,4 +1,4 @@
-import type { MovieType } from '../types/movie-types';
+import type { MovieType } from '../types/movieTypes';
 
 const WATCHLIST_KEY = 'List_With_Movies_From_Watchlist_v1';
 

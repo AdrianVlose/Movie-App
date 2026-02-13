@@ -1,8 +1,8 @@
-import type { MovieType } from '../../types/movie-types.js';
+import type { MovieType } from '../../types/movieTypes.js';
 import Card from './Card.jsx';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getNextMoviesToBeDisplayed } from '../../utils/card.js';
-import ModalContext from '../../utils/modalContext.js';
+import { ModalContext, LoadingContext } from '../../utils/contexts.js';
 import ModalCard from './ModalCard.js';
 
 function Cards({ movies = [] }: { movies: MovieType[] }) {
@@ -10,6 +10,7 @@ function Cards({ movies = [] }: { movies: MovieType[] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [movieToBeDisplayed, setMovieToBeDisplayed] =
     useState<MovieType | null>(null);
+  const { isLoading } = useContext(LoadingContext);
 
   const numberOfMoviesInAPage = 8;
   const currentDisplayedMovies = getNextMoviesToBeDisplayed(
@@ -28,37 +29,43 @@ function Cards({ movies = [] }: { movies: MovieType[] }) {
   }, [movies]);
 
   return (
-    <section className='movies-list'>
-      <img
-        src='src/assets/left-arrow.svg'
-        alt='left-arrow'
-        className={`arrow-icon left ${leftArrowExtraClass}`}
-        onClick={() =>
-          setNumberOfPageToBeDisplayed(numberOfPageToBeDisplayed - 1)
-        }
-      />
-      <ModalContext
-        value={{
-          isModalOpen,
-          setIsModalOpen,
-          movieToBeDisplayed,
-          setMovieToBeDisplayed,
-        }}
-      >
-        {currentDisplayedMovies?.map((movie, index) => {
-          return <Card movie={movie} index={index} key={index} />;
-        })}
+    <section className={isLoading ? 'loading-state-display' : 'movies-list'}>
+      {isLoading ? (
+        <h2 className='loading-state-text'>Preparing your dashboard</h2>
+      ) : (
+        <>
+          <img
+            src='src/assets/left-arrow.svg'
+            alt='left-arrow'
+            className={`arrow-icon left ${leftArrowExtraClass}`}
+            onClick={() =>
+              setNumberOfPageToBeDisplayed(numberOfPageToBeDisplayed - 1)
+            }
+          />
+          <ModalContext
+            value={{
+              isModalOpen,
+              setIsModalOpen,
+              movieToBeDisplayed,
+              setMovieToBeDisplayed,
+            }}
+          >
+            {currentDisplayedMovies?.map((movie, index) => {
+              return <Card movie={movie} index={index} key={index} />;
+            })}
 
-        {isModalOpen ? <ModalCard /> : <></>}
-      </ModalContext>
-      <img
-        src='src/assets/right-arrow.svg'
-        alt='right-arrow'
-        className={`arrow-icon right ${rightArrowExtraClass}`}
-        onClick={() =>
-          setNumberOfPageToBeDisplayed(numberOfPageToBeDisplayed + 1)
-        }
-      />
+            {isModalOpen ? <ModalCard /> : <></>}
+          </ModalContext>
+          <img
+            src='src/assets/right-arrow.svg'
+            alt='right-arrow'
+            className={`arrow-icon right ${rightArrowExtraClass}`}
+            onClick={() =>
+              setNumberOfPageToBeDisplayed(numberOfPageToBeDisplayed + 1)
+            }
+          />
+        </>
+      )}
     </section>
   );
 }

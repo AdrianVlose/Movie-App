@@ -2,7 +2,7 @@ import {
   classifyRating,
   convertFirstLetterToUpperCase,
 } from '../../utils/card.js';
-import ModalContext from '../../utils/modalContext.js';
+import { ModalContext } from '../../utils/contexts.js';
 import { useContext } from 'react';
 
 function ModalCard() {

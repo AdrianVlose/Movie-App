@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { parseData } from '../../utils/data';
-import type { MovieType } from '../../types/movie-types';
+import type { MovieType } from '../../types/movieTypes';
+import { LoadingContext } from '../../utils/contexts';
 
 function SearchForm({
   updateMoviesFn,
@@ -12,14 +13,17 @@ function SearchForm({
   isUserOnHomePage: boolean;
 }) {
   const [inputText, setInputText] = useState('');
+  const { setIsLoading } = useContext(LoadingContext);
 
   useEffect(() => {
+    setIsLoading(true);
     const filteredMovies = parseData(
       inputText,
       selectedGenre,
       isUserOnHomePage,
     );
     updateMoviesFn(filteredMovies);
+    setIsLoading(false);
   }, [selectedGenre, isUserOnHomePage]);
 
   const handleSearch = (event: React.SubmitEvent<HTMLFormElement> | null) => {
@@ -46,6 +50,12 @@ function SearchForm({
           autoComplete='none'
           value={inputText}
           onChange={(event) => setInputText(event.target.value)}
+        />
+        <img
+          src='src/assets/trash.svg'
+          alt='delete icon'
+          className='icon-delete'
+          onClick={() => setInputText('')}
         />
       </label>
     </form>

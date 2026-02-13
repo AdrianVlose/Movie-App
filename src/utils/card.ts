@@ -1,4 +1,4 @@
-import type { MovieType } from '../types/movie-types.ts';
+import type { MovieType } from '../types/movieTypes.ts';
 
 export function classifyRating(rating: number) {
   if (rating < 5) {
