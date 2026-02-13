@@ -16,6 +16,17 @@
     grid-template-columns: repeat(2, 45%);
     grid-template-rows: repeat(4, 1fr);
   }
+
+  .no-cards-text {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 400;
+    color: $text-label-color;
+  }
 }
 
 .loading-state-display {

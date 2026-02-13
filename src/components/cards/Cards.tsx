@@ -23,7 +23,9 @@ function Cards({ movies = [] }: { movies: MovieType[] }) {
 
   const leftArrowExtraClass = 0 === numberOfPageToBeDisplayed ? 'disabled' : '';
   const rightArrowExtraClass =
-    numberOfPages - 1 === numberOfPageToBeDisplayed ? 'disabled' : '';
+    numberOfPages - 1 === numberOfPageToBeDisplayed || numberOfPages === 0
+      ? 'disabled'
+      : '';
 
   useEffect(() => {
     setNumberOfPageToBeDisplayed(0);
@@ -49,9 +51,13 @@ function Cards({ movies = [] }: { movies: MovieType[] }) {
               setMovieToBeDisplayed,
             }}
           >
-            {currentDisplayedMovies?.map((movie, index) => {
-              return <Card movie={movie} index={index} key={index} />;
-            })}
+            {currentDisplayedMovies.length === 0 ? (
+              <h2 className='no-cards-text'>No cards to be displayed</h2>
+            ) : (
+              currentDisplayedMovies?.map((movie, index) => {
+                return <Card movie={movie} index={index} key={index} />;
+              })
+            )}
 
             {isModalOpen ? <ModalCard /> : <></>}
           </ModalContext>

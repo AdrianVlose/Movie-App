@@ -25,7 +25,7 @@ function SearchForm({
     );
     updateMoviesFn(filteredMovies);
     setIsLoading(false);
-  }, [selectedGenre, isUserOnHomePage]);
+  }, [selectedGenre, isUserOnHomePage, inputText]);
 
   const handleSearch = (event: React.SubmitEvent<HTMLFormElement> | null) => {
     if (!event) {
