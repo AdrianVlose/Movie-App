@@ -58,13 +58,6 @@
   border-radius: 12px;
   right: 1rem;
 }
-.search-bar .icons .icon {
-  padding: 0.1rem;
-  transition: all 0.1s linear;
-}
-.search-bar .icons .icon:hover {
-  transform: scale(1.1);
-}
 
 .movie-card {
   width: 100%;
@@ -161,27 +154,11 @@
   width: 100%;
   position: relative;
 }
-.movies-list .loading-state-text {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-}
-.movies-list .arrow-icon {
-  position: absolute;
-  z-index: 10;
-  align-self: center;
-  transition: all 0.3s ease;
-}
-.movies-list .arrow-icon.right {
-  right: 0.1rem;
-}
-.movies-list .arrow-icon.left {
-  left: 0.1rem;
-}
-.movies-list .arrow-icon.disabled {
-  pointer-events: none;
-  cursor: not-allowed;
-  opacity: 0.1;
+@media (width <= 970px) {
+  .movies-list {
+    grid-template-columns: repeat(2, 45%);
+    grid-template-rows: repeat(4, 1fr);
+  }
 }
 
 .loading-state-display {
@@ -221,16 +198,6 @@
   font-size: 1rem;
   border: 1px solid #9ca3af;
   background-color: #1a1a1a;
-}
-.search-form .label .icon-delete {
-  position: absolute;
-  align-self: center;
-  right: 0.5rem;
-  z-index: 10;
-  transition: all 0.5s ease;
-}
-.search-form .label .icon-delete:hover {
-  transform: scale(1.1);
 }
 
 .header {

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { parseData } from '../../utils/data';
 import type { MovieType } from '../../types/movieTypes';
 import { LoadingContext } from '../../utils/contexts';
+import { DeleteIconForSearch } from '../../utils/icons';
 
 function SearchForm({
   updateMoviesFn,
@@ -51,12 +52,7 @@ function SearchForm({
           value={inputText}
           onChange={(event) => setInputText(event.target.value)}
         />
-        <img
-          src='src/assets/trash.svg'
-          alt='delete icon'
-          className='icon-delete'
-          onClick={() => setInputText('')}
-        />
+        <DeleteIconForSearch onClick={() => setInputText('')} />
       </label>
     </form>
   );
