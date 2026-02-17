@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DeleteIconForSearch = styled.img.attrs({
-  src: 'src/assets/trash.svg',
+  src: '/src/assets/trash.svg',
   alt: 'delete icon',
 })`
   position: absolute;
@@ -16,7 +16,7 @@ export const DeleteIconForSearch = styled.img.attrs({
 `;
 
 export const LeftArrowIcon = styled.img.attrs({
-  src: 'src/assets/left-arrow.svg',
+  src: '/src/assets/left-arrow.svg',
   alt: 'left-arrow',
 })`
   position: absolute;
@@ -37,7 +37,7 @@ export const LeftArrowIcon = styled.img.attrs({
 `;
 
 export const RightArrowIcon = styled.img.attrs({
-  src: 'src/assets/right-arrow.svg',
+  src: '/src/assets/right-arrow.svg',
   alt: 'right-arrow',
 })`
   position: absolute;
@@ -58,10 +58,10 @@ export const RightArrowIcon = styled.img.attrs({
 `;
 
 export const SearchBarIcon = styled.img.attrs((props) => ({
-  src: `src/assets/${props.src}.svg`,
+  src: `/src/assets/${props.src}.svg`,
   alt: `${props.src} icon`,
 }))`
-  padding: 0.1rem;
+  padding: 0.1rem
   transition: all 0.1s linear;
 
   &:hover {

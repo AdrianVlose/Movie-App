@@ -47,12 +47,24 @@
   .icons {
     position: absolute;
     background: linear-gradient($third-dark-bg-color, $primary-dark-bg-color);
-    padding: 0 2rem;
+    padding: 2px 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 2rem;
     border-radius: 12px;
     right: 1rem;
+
+    .icons-link {
+      display: flex;
+      padding: 0px 6px;
+
+      &.active {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        transition: all 0.2s ease;
+        border-radius: 12px;
+      }
+    }
   }
 }

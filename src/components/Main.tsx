@@ -1,18 +1,18 @@
-import Cards from './cards/Cards.jsx';
 import type { MovieType } from '../types/movieTypes.js';
 import { useState } from 'react';
 import SearchBar from './bars/SearchBar.jsx';
-import { LoadingContext } from '../utils/contexts.js';
+import { MoviesContext } from '../utils/contexts.js';
+import { Outlet } from 'react-router';
 
 function Main() {
   const [movies, setMovies] = useState<MovieType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [movieById, setMovieById] = useState<MovieType | null>(null);
   return (
     <main className='main'>
-      <LoadingContext value={{ isLoading, setIsLoading }}>
-        <SearchBar updateMoviesFn={setMovies} />
-        <Cards movies={movies} />
-      </LoadingContext>
+      <MoviesContext value={{ movies, setMovies, movieById, setMovieById }}>
+        <SearchBar />
+        <Outlet />
+      </MoviesContext>
     </main>
   );
 }

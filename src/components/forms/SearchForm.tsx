@@ -3,29 +3,33 @@ import { parseData } from '../../utils/data';
 import type { MovieType } from '../../types/movieTypes';
 import { LoadingContext } from '../../utils/contexts';
 import { DeleteIconForSearch } from '../../utils/icons';
+import { useLocation } from 'react-router';
 
 function SearchForm({
   updateMoviesFn,
   selectedGenre,
-  isUserOnHomePage,
+  initialInputText,
 }: {
   updateMoviesFn: React.Dispatch<React.SetStateAction<MovieType[]>>;
   selectedGenre: string;
-  isUserOnHomePage: boolean;
+  initialInputText: string;
 }) {
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState(initialInputText);
   const { setIsLoading } = useContext(LoadingContext);
+
+  const location = useLocation().pathname;
+  const isWatchlistPage = location === '/watchlist' ? true : false;
 
   useEffect(() => {
     setIsLoading(true);
     const filteredMovies = parseData(
       inputText,
       selectedGenre,
-      isUserOnHomePage,
+      !isWatchlistPage,
     );
     updateMoviesFn(filteredMovies);
     setIsLoading(false);
-  }, [selectedGenre, isUserOnHomePage, inputText]);
+  }, [selectedGenre, inputText, isWatchlistPage]);
 
   const handleSearch = (event: React.SubmitEvent<HTMLFormElement> | null) => {
     if (!event) {
@@ -36,7 +40,7 @@ function SearchForm({
     const filteredMovies = parseData(
       inputText,
       selectedGenre,
-      isUserOnHomePage,
+      !isWatchlistPage,
     );
     updateMoviesFn(filteredMovies);
   };

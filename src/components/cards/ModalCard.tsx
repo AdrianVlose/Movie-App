@@ -11,7 +11,7 @@ function ModalCard() {
     return;
   }
   const movie = movieToBeDisplayed;
-  const imgPath = `src/assets/movies/${movie.image}`;
+  const imgPath = `/src/assets/movies/${movie.image}`;
   const ratingValueColor = classifyRating(parseFloat(movie.rating));
   const formattedGenre = convertFirstLetterToUpperCase(movie.genre);
   return (

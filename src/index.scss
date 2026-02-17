@@ -5,6 +5,7 @@
 @use './components/forms/searchForm.scss' as *;
 @use './components/header/header.scss' as *;
 @use './components/cards/modalCard.scss' as *;
+@use './components//cards/cardById.scss' as *;
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
