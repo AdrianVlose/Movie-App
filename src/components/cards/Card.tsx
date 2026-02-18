@@ -18,7 +18,7 @@ function Card({ movie, index }: { movie: MovieType; index: number }) {
   const { isModalOpen, setIsModalOpen, setMovieToBeDisplayed } =
     useContext(ModalContext);
 
-  const imgPath = `src/assets/movies/${movie.image}`;
+  const imgPath = `/src/assets/movies/${movie.image}`;
   const ratingValueColor = classifyRating(parseFloat(movie.rating));
   const formattedGenre = convertFirstLetterToUpperCase(movie.genre);
 

@@ -24,3 +24,12 @@ export function parseData(
     (a, b) => parseFloat(b.rating) - parseFloat(a.rating),
   );
 }
+
+export function getMovieById(id: string) {
+  if (isNaN(parseInt(id))) {
+    return null;
+  }
+  const validId = parseInt(id);
+  const indexArray = moviesJSON.findIndex((movie) => movie.id === validId);
+  return indexArray ? moviesJSON[indexArray] : null;
+}

@@ -5,6 +5,8 @@
 @use './components/forms/searchForm.scss' as *;
 @use './components/header/header.scss' as *;
 @use './components/cards/modalCard.scss' as *;
+@use './components/cards/cardById.scss' as *;
+@use './components//pages/notFound.scss' as *;
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,6 +16,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overscroll-behavior: none;
 }
 
 body {

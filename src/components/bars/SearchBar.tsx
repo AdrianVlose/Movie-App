@@ -1,24 +1,28 @@
 import SearchForm from '../forms/SearchForm.jsx';
-import type { MovieType } from '../../types/movieTypes.js';
 import { GENRES } from '../../types/constants.js';
 import { convertFirstLetterToUpperCase } from '../../utils/card.js';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SearchBarIcon } from '../../utils/icons.js';
+import { NavLink, useSearchParams } from 'react-router';
+import { MoviesContext } from '../../utils/contexts.js';
+import { getInitialValues } from '../../utils/searchBar.js';
 
-function SearchBar({
-  updateMoviesFn,
-}: {
-  updateMoviesFn: React.Dispatch<React.SetStateAction<MovieType[]>>;
-}) {
-  const [isUserOnHomePage, setIsUserOnHomePage] = useState(true);
-  const [genre, setGenre] = useState('all genres');
+function SearchBar() {
+  const { setMovies } = useContext(MoviesContext);
+  const [params] = useSearchParams();
+  const { initialGenre, initialSearchValue } = getInitialValues(
+    params.get('genre'),
+    params.get('search'),
+  );
+
+  const [genre, setGenre] = useState(initialGenre);
 
   return (
     <nav className='search-bar'>
       <SearchForm
-        updateMoviesFn={updateMoviesFn}
+        updateMoviesFn={setMovies}
         selectedGenre={genre}
-        isUserOnHomePage={isUserOnHomePage}
+        initialInputText={initialSearchValue}
       />
       <label className='genres'>
         Genre:
@@ -33,11 +37,12 @@ function SearchBar({
         </select>
       </label>
       <section className='icons'>
-        <SearchBarIcon src='home' onClick={() => setIsUserOnHomePage(true)} />
-        <SearchBarIcon
-          src='watchlist'
-          onClick={() => setIsUserOnHomePage(false)}
-        />
+        <NavLink to='/' className='icons-link'>
+          <SearchBarIcon src='home' />
+        </NavLink>
+        <NavLink to='watchlist' className='icons-link'>
+          <SearchBarIcon src='watchlist' />
+        </NavLink>
       </section>
     </nav>
   );
