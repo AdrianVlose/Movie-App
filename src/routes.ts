@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router';
 import Main from './components/Main.jsx';
 import Cards from './components/cards/Cards.jsx';
-import App from './App.jsx';
+import Layout from './Layout.jsx';
 import CardById from './components/cards/CardById.jsx';
 import { NotFound } from './components/pages/NotFound.jsx';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    Component: App,
+    Component: Layout,
     children: [
       {
         Component: Main,

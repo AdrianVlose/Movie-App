@@ -61,10 +61,5 @@ export const SearchBarIcon = styled.img.attrs((props) => ({
   src: `/src/assets/${props.src}.svg`,
   alt: `${props.src} icon`,
 }))`
-  padding: 0.1rem
-  transition: all 0.1s linear;
-
-  &:hover {
-    transform: scale(1.1);
-  }
+  padding: 0.1rem;
 `;

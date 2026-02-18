@@ -15,12 +15,7 @@ function ModalCard() {
   const ratingValueColor = classifyRating(parseFloat(movie.rating));
   const formattedGenre = convertFirstLetterToUpperCase(movie.genre);
   return (
-    <div
-      className='overlay'
-      onClick={() => {
-        setIsModalOpen(false);
-      }}
-    >
+    <div className='overlay'>
       <dialog className='modal'>
         <img src={imgPath} className='img' alt={movie.title} />
         <section className='info'>
@@ -41,6 +36,15 @@ function ModalCard() {
             Description: <p>{movie.description}</p>
           </span>
         </section>
+        <button
+          type='button'
+          onClick={() => {
+            setIsModalOpen(false);
+          }}
+          className='close-button'
+        >
+          Close
+        </button>
       </dialog>
     </div>
   );
