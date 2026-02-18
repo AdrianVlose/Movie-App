@@ -1,12 +1,11 @@
-import { Outlet } from 'react-router';
-import Header from './components/header/Header.jsx';
-function App() {
-  return (
-    <div className='page'>
-      <Header />
-      <Outlet />
-    </div>
-  );
-}
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.scss';
+import { RouterProvider } from 'react-router';
+import { router } from './routes';
 
-export default App;
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
+);
