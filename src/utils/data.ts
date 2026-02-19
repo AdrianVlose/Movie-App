@@ -14,15 +14,11 @@ export function parseData(
   const moviesMatchedByText = movies.filter((movie) => {
     return movie.title.toLowerCase().includes(searchText.toLowerCase());
   });
-  const moviesMatchedByTextAndGenre = moviesMatchedByText.filter((movie) => {
+  return moviesMatchedByText.filter((movie) => {
     return selectedGenre === 'all genres'
       ? true
       : movie.genre === selectedGenre;
   });
-
-  return moviesMatchedByTextAndGenre.sort(
-    (a, b) => parseFloat(b.rating) - parseFloat(a.rating),
-  );
 }
 
 export function getMovieById(id: string) {

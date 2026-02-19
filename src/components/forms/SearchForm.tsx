@@ -1,34 +1,31 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { parseData } from '../../utils/data';
-import type { MovieType } from '../../types/movieTypes';
-import { LoadingContext } from '../../utils/contexts';
 import { DeleteIconForSearch } from '../../utils/icons';
 import { useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../store/store.js';
 
 function SearchForm({
-  updateMoviesFn,
   selectedGenre,
   initialInputText,
 }: {
-  updateMoviesFn: React.Dispatch<React.SetStateAction<MovieType[]>>;
   selectedGenre: string;
   initialInputText: string;
 }) {
+  const dispatch = useDispatch<AppDispatch>();
   const [inputText, setInputText] = useState(initialInputText);
-  const { setIsLoading } = useContext(LoadingContext);
 
   const location = useLocation().pathname;
   const isWatchlistPage = location === '/watchlist' ? true : false;
 
   useEffect(() => {
-    setIsLoading(true);
     const filteredMovies = parseData(
       inputText,
       selectedGenre,
       !isWatchlistPage,
     );
-    updateMoviesFn(filteredMovies);
-    setIsLoading(false);
+
+    dispatch({ type: 'movies/setMovies', payload: filteredMovies });
   }, [selectedGenre, inputText, isWatchlistPage]);
 
   const handleSearch = (event: React.SubmitEvent<HTMLFormElement> | null) => {
@@ -42,7 +39,7 @@ function SearchForm({
       selectedGenre,
       !isWatchlistPage,
     );
-    updateMoviesFn(filteredMovies);
+    dispatch({ type: 'movies/setMovies', payload: filteredMovies });
   };
 
   return (

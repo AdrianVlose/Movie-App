@@ -1,15 +1,13 @@
 import SearchForm from '../forms/SearchForm.jsx';
 import { OPTIONS_GENRES } from '../../types/constants.js';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { SearchBarIcon } from '../../utils/icons.js';
 import { NavLink, useSearchParams } from 'react-router';
-import { MoviesContext } from '../../utils/contexts.js';
 import { getInitialValues, type Option } from '../../utils/searchBar.js';
 import Select, { type SingleValue } from 'react-select';
 import { colourStylesSelect } from '../../utils/searchBar.js';
 
 function SearchBar() {
-  const { setMovies } = useContext(MoviesContext);
   const [params] = useSearchParams();
   const { initialGenre, initialSearchValue } = getInitialValues(
     params.get('genre'),
@@ -25,11 +23,7 @@ function SearchBar() {
 
   return (
     <nav className='search-bar'>
-      <SearchForm
-        updateMoviesFn={setMovies}
-        selectedGenre={genre}
-        initialInputText={initialSearchValue}
-      />
+      <SearchForm selectedGenre={genre} initialInputText={initialSearchValue} />
       <label className='genres'>
         Genre:
         <Select

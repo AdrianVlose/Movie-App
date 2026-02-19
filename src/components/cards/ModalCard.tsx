@@ -1,12 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
   classifyRating,
   convertFirstLetterToUpperCase,
 } from '../../utils/card.js';
-import { ModalContext } from '../../utils/contexts.js';
-import { useContext } from 'react';
+import type { AppDispatch, RootState } from '../store/store.js';
 
 function ModalCard() {
-  const { movieToBeDisplayed, setIsModalOpen } = useContext(ModalContext);
+  const movieIdToBeDisplayed = useSelector(
+    (state: RootState) => state.movieModal.movieIdToBeDisplayed,
+  );
+  const movieToBeDisplayed = useSelector(
+    (state: RootState) => state.movies.movies[movieIdToBeDisplayed],
+  );
+  const dispatch = useDispatch<AppDispatch>();
   if (!movieToBeDisplayed) {
     return;
   }
@@ -39,7 +45,7 @@ function ModalCard() {
         <button
           type='button'
           onClick={() => {
-            setIsModalOpen(false);
+            dispatch({ type: 'movieModal/setIsModalOpen', payload: false });
           }}
           className='close-button'
         >

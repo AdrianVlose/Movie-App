@@ -3,20 +3,24 @@ import {
   classifyRating,
   convertFirstLetterToUpperCase,
 } from '../../utils/card.js';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import {
   addToWatchlist,
   isMovieAlreadyInHistory,
   removeFromWatchlist,
 } from '../../utils/watchlist.js';
-import { ModalContext } from '../../utils/contexts.js';
+import type { AppDispatch, RootState } from '../store/store.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Card({ movie, index }: { movie: MovieType; index: number }) {
   const [isMovieInWatchlist, setIsMovieInWatchlist] = useState(
     isMovieAlreadyInHistory(movie),
   );
-  const { isModalOpen, setIsModalOpen, setMovieToBeDisplayed } =
-    useContext(ModalContext);
+
+  const isModalOpen = useSelector(
+    (state: RootState) => state.movieModal.isModalOpen,
+  );
+  const dispatch = useDispatch<AppDispatch>();
 
   const imgPath = `/src/assets/movies/${movie.image}`;
   const ratingValueColor = classifyRating(parseFloat(movie.rating));
@@ -41,8 +45,11 @@ function Card({ movie, index }: { movie: MovieType; index: number }) {
       id={`card-id-${index}`}
       className={isModalOpen ? 'movie-card no-hover' : 'movie-card'}
       onClick={() => {
-        setIsModalOpen(true);
-        setMovieToBeDisplayed(movie);
+        dispatch({ type: 'movieModal/setIsModalOpen', payload: true });
+        dispatch({
+          type: 'movieModal/setMovieIdToBeDisplayed',
+          payload: movie.id,
+        });
       }}
     >
       <img src={imgPath} className='img' alt={movie.title} />
