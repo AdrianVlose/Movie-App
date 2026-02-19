@@ -31,3 +31,13 @@ export function getNextMoviesToBeDisplayed(
     (nextPage + 1) * numberOfMoviesInAPage,
   );
 }
+
+export function isIdFromUrlValid(id: string | undefined) {
+  if (!id) {
+    return false;
+  }
+  if (isNaN(parseInt(id))) {
+    return false;
+  }
+  return true;
+}

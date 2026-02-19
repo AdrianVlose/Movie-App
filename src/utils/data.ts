@@ -20,12 +20,3 @@ export function parseData(
       : movie.genre === selectedGenre;
   });
 }
-
-export function getMovieById(id: string) {
-  if (isNaN(parseInt(id))) {
-    return null;
-  }
-  const validId = parseInt(id);
-  const indexArray = moviesJSON.findIndex((movie) => movie.id === validId);
-  return indexArray ? moviesJSON[indexArray] : null;
-}

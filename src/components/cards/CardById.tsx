@@ -2,13 +2,17 @@ import { useParams } from 'react-router';
 import {
   classifyRating,
   convertFirstLetterToUpperCase,
+  isIdFromUrlValid,
 } from '../../utils/card.js';
-import { getMovieById } from '../../utils/data.js';
+import type { RootState } from '../store/store.js';
+import { useSelector } from 'react-redux';
 
 function CardById() {
   const { id } = useParams();
-  const idFromParams = id ?? '';
-  const movie = getMovieById(idFromParams);
+  const idFromParams = id && isIdFromUrlValid(id) ? parseInt(id) : -1;
+  const movie = useSelector(
+    (state: RootState) => state.movies.movies[idFromParams],
+  );
   let imgPath, formattedGenre, ratingValueColor;
   if (movie) {
     imgPath = `/src/assets/movies/${movie.image}`;

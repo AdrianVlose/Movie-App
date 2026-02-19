@@ -3,7 +3,7 @@ import type { MovieType } from '../../types/movieTypes';
 import { convertMovieListToMovieRecord } from '../../utils/redux';
 
 type MoviesState = {
-  movies: Record<string, MovieType>;
+  movies: Record<number, MovieType>;
 };
 
 const initialState: MoviesState = {
